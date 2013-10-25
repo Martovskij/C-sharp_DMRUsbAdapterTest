@@ -8,12 +8,16 @@ using NAudio.WindowsMediaFormat;
 using NAudio.Wave;
 
 
+
 namespace DMRUsbAdapterTest.src.Sound
 {
     class InputLines : InterfaceLines<WaveInCapabilities>
     {
         public List<Line<WaveInCapabilities>> audioDeviceList = null;
         static InputLines instance = null;
+        int selectedDeviceIndex = -1;
+
+
 
         InputLines()
         {
@@ -43,6 +47,18 @@ namespace DMRUsbAdapterTest.src.Sound
                 line.line = WaveIn.GetCapabilities(i);
                 audioDeviceList.Add(line);  
             }
+        }
+
+        public int getSelectedDeviceIndex()
+        {
+            return selectedDeviceIndex;
+        }
+
+        public void setSelectedDeviceIndex(int index)
+        {
+            RefreshDeviceList();
+            if (index > audioDeviceList.Count) throw new ArgumentOutOfRangeException();
+            selectedDeviceIndex = index;
         }
 
         public WaveInCapabilities getLineByIndex(int index)
