@@ -1,0 +1,11 @@
+D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.MainWindow.resources
+D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.Properties.Resources.resources
+D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.src.UI.WarningWindow.resources
+D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.csproj.GenerateResource.Cache
+D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\DMRUsbAdapterTest.exe
+D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\DMRUsbAdapterTest.pdb
+D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\NAudio.dll
+D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\NAudio.WindowsMediaFormat.dll
+D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\NAudio.xml
+D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.exe
+D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.pdb
