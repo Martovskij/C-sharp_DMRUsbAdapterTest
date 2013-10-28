@@ -14,6 +14,7 @@ namespace DMRUsbAdapterTest.src.Sound
     {
         public List<Line<WaveOutCapabilities>> audioDeviceList = null;
         public static OutputLines instance = null;
+        int selectedDeviceIndex = -1;
 
         OutputLines()
         {
@@ -31,7 +32,10 @@ namespace DMRUsbAdapterTest.src.Sound
             else return instance;
         }
 
-
+        public int getSelectedDeviceIndex()
+        {
+            return selectedDeviceIndex;
+        }
 
         public void RefreshDeviceList()
         {
@@ -45,6 +49,13 @@ namespace DMRUsbAdapterTest.src.Sound
                 line.line = WaveOut.GetCapabilities(i);
                 audioDeviceList.Add(line);  
             }
+        }
+
+        public void setSelectedDeviceIndex(int index)
+        {
+            RefreshDeviceList();
+            if (index > audioDeviceList.Count) throw new ArgumentOutOfRangeException();
+            selectedDeviceIndex = index;
         }
 
         public WaveOutCapabilities getLineByIndex(int index)

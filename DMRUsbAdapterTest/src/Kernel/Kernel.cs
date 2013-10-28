@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DMRUsbAdapterTest.src.Radio;
+using log4net;
+using log4net.Config;
 
-using  DMRUsbAdapterTest.src.Radio;
-
-
-namespace DMRUsbAdapterTest.src.Kernel
+namespace DMRUsbAdapterTest.src.Kernel 
 {
-    class Kernel
+    class Kernel : AudioDataObserver
     {
         public MainWindow mainWindow;
         public RadioDevice radioDevice;
@@ -27,6 +27,11 @@ namespace DMRUsbAdapterTest.src.Kernel
             else return instance;
         }
 
+        public void notify(object data)
+        {
+            //mainWindo
+
+        }
 
 
     }

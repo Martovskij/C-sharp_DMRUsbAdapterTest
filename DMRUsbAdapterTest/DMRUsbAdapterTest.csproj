@@ -11,7 +11,8 @@
     <RootNamespace>DMRUsbAdapterTest</RootNamespace>
     <AssemblyName>DMRUsbAdapterTest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -34,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>libs\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="NAudio">
       <HintPath>libs\NAudio.dll</HintPath>
     </Reference>
@@ -52,7 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Kernel\AudioDataObserver.cs" />
     <Compile Include="src\Kernel\Kernel.cs" />
+    <Compile Include="src\Kernel\Logger.cs" />
     <Compile Include="src\Radio\AbstractRadio.cs" />
     <Compile Include="src\Radio\RadioDevice.cs" />
     <Compile Include="src\Radio\RadioService.cs" />
@@ -61,6 +67,7 @@
     <Compile Include="src\Sound\InputLines.cs" />
     <Compile Include="src\Sound\InterfaceLines.cs" />
     <Compile Include="src\Sound\Line.cs" />
+    <Compile Include="src\Sound\MicrophoneCaptor.cs" />
     <Compile Include="src\Sound\OutputLines.cs" />
     <Compile Include="src\Sound\SoundManager.cs" />
     <Compile Include="src\UI\MainWindow.cs">
@@ -88,10 +95,12 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="src\UI\WarningWindow.resx">
       <DependentUpon>WarningWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

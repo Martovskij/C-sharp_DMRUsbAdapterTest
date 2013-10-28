@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-
+using NAudio;
+using NAudio.WindowsMediaFormat;
+using NAudio.Wave;
 using System.Runtime.CompilerServices;
+
+
 
 namespace DMRUsbAdapterTest.src.Sound
 {
@@ -49,6 +52,16 @@ namespace DMRUsbAdapterTest.src.Sound
                 list.Add(OutputLines.getInstance().getLineByIndex(i).ProductName);
             }
             return list;
+        }
+
+        public void changeSelectedMic(int index)  // Warning: throws ArgumentIndexOutOfRangeException
+        {
+            InputLines.getInstance().setSelectedDeviceIndex(index);
+        }
+
+        public void changeSelectedSpeak(int index)  // Warning: throws ArgumentIndexOutOfRangeException
+        {
+            OutputLines.getInstance().setSelectedDeviceIndex(index);
         }
 
     }

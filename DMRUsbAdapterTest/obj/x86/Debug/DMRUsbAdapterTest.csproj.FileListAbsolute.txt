@@ -9,3 +9,18 @@ D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\NAudio.WindowsMediaForma
 D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\NAudio.xml
 D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.exe
 D:\MyWork\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.pdb
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\DMRUsbAdapterTest.exe.config
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\DMRUsbAdapterTest.exe
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\DMRUsbAdapterTest.pdb
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\log4net.dll
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\NAudio.dll
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\NAudio.WindowsMediaFormat.dll
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\bin\Debug\NAudio.xml
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.MainWindow.resources
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.Properties.Resources.resources
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.src.UI.WarningWindow.resources
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.exe
+D:\MyWork\Source Code\DMRUsbAdapterTest\DMRUsbAdapterTest\obj\x86\Debug\DMRUsbAdapterTest.pdb

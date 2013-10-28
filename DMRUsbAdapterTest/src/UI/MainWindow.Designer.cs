@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.button1 = new System.Windows.Forms.Button();
             this.spkBar = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.инфоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.mainMenu.SuspendLayout();
@@ -114,7 +116,7 @@
             // 
             this.progressBar1.Location = new System.Drawing.Point(318, 21);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(56, 43);
+            this.progressBar1.Size = new System.Drawing.Size(56, 47);
             this.progressBar1.TabIndex = 7;
             // 
             // groupBox1
@@ -150,6 +152,7 @@
             // 
             // button2
             // 
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.Location = new System.Drawing.Point(174, 7);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(47, 30);
@@ -182,6 +185,7 @@
             this.speakBox.Name = "speakBox";
             this.speakBox.Size = new System.Drawing.Size(175, 95);
             this.speakBox.TabIndex = 1;
+            this.speakBox.SelectedIndexChanged += new System.EventHandler(this.changeSpeakHandler);
             // 
             // micBox
             // 
@@ -190,6 +194,7 @@
             this.micBox.Name = "micBox";
             this.micBox.Size = new System.Drawing.Size(181, 95);
             this.micBox.TabIndex = 0;
+            this.micBox.SelectedIndexChanged += new System.EventHandler(this.changeMicHandler);
             // 
             // mainMenu
             // 
@@ -213,7 +218,7 @@
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.exitHandler);
             // 
@@ -223,11 +228,23 @@
             this.инфоToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.инфоToolStripMenuItem.Text = "Инфо";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.Color.Blue;
+            this.label6.Location = new System.Drawing.Point(-2, 252);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(405, 37);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Эрика USB Адаптер тест";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 254);
+            this.ClientSize = new System.Drawing.Size(408, 294);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.mainMenu);
@@ -266,6 +283,7 @@
         private System.Windows.Forms.ToolStripMenuItem инфоToolStripMenuItem;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.Label label6;
     }
 }
 
