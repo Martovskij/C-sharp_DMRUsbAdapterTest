@@ -6,7 +6,7 @@ using NAudio;
 using NAudio.WindowsMediaFormat;
 using NAudio.Wave;
 using System.Runtime.CompilerServices;
-
+using NUnit.Framework;
 
 
 namespace DMRUsbAdapterTest.src.Sound
@@ -14,11 +14,25 @@ namespace DMRUsbAdapterTest.src.Sound
     class SoundManager
     {
         static SoundManager instance = null;
-        SoundManager() { }
+        MicrophoneCaptor microphoneCaptor = null;
+
+
+        SoundManager() 
+        { 
+                
+        }
+
+        public void SetupCaptorHandler(Kernel.AudioDataObserver observer)
+        {
+            if (observer == null) throw new ArgumentNullException();
+            microphoneCaptor = new MicrophoneCaptor(observer);
+        }
+
 
         [MethodImplAttribute(MethodImplOptions.Synchronized)]
         public static SoundManager getInstance()
         {
+            
             if (instance == null)
             {
                 instance = new SoundManager();

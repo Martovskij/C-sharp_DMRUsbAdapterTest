@@ -31,7 +31,7 @@ namespace DMRUsbAdapterTest
             }
             catch(Exception ex)
             {
-                //log.Error(ex.Message);
+               log.Error(ex.Message);
                 Console.WriteLine(ex);
                 new WarningWindow(null,ex.ToString());
             }
