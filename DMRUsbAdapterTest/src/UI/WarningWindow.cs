@@ -19,6 +19,8 @@ namespace DMRUsbAdapterTest.src.UI
             
             InitializeComponent();
             this.messageLabel.Text = message;
+            Application.Run(this);
+           
         }
 
         private void okButtonClick(object sender, EventArgs e)

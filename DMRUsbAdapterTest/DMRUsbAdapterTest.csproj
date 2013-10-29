@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>DMRUsbAdapterTest.DMRUsbAdapterTest</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net">
       <HintPath>libs\log4net.dll</HintPath>
@@ -82,8 +85,8 @@
   <ItemGroup>
     <Compile Include="src\Kernel\AudioDataObserver.cs" />
     <Compile Include="src\Kernel\Kernel.cs" />
-    <Compile Include="src\Kernel\Logger.cs" />
     <Compile Include="src\Radio\AbstractRadio.cs" />
+    <Compile Include="src\Radio\ISocketHandle.cs" />
     <Compile Include="src\Radio\RadioDevice.cs" />
     <Compile Include="src\Radio\RadioService.cs" />
     <Compile Include="src\Radio\RccPacket.cs" />
@@ -108,6 +111,7 @@
     <Compile Include="src\UI\WarningWindow.Designer.cs">
       <DependentUpon>WarningWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="unit_test\SocketServiceTest.cs" />
     <EmbeddedResource Include="src\UI\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +144,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,10 +5,8 @@ using System.Text;
 
 namespace DMRUsbAdapterTest.src.Radio
 {
-    interface AbstractRadio
+    interface ISocketHandle
     {
-        void Connect();
-        void PressPttRequest();
-        void ReleasePttRequest();
+        void AddToHandle(Object obj);
     }
 }

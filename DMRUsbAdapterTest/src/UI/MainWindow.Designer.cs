@@ -34,10 +34,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.micBar = new System.Windows.Forms.ProgressBar();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.radioStateIndicator = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,30 +51,32 @@
             this.инфоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(212, 43);
+            this.button1.Location = new System.Drawing.Point(6, 29);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 25);
+            this.button1.Size = new System.Drawing.Size(120, 25);
             this.button1.TabIndex = 0;
             this.button1.Text = "Connect";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.connect);
             // 
             // spkBar
             // 
-            this.spkBar.Location = new System.Drawing.Point(50, 46);
+            this.spkBar.Location = new System.Drawing.Point(108, 43);
             this.spkBar.Name = "spkBar";
-            this.spkBar.Size = new System.Drawing.Size(125, 19);
+            this.spkBar.Size = new System.Drawing.Size(61, 19);
             this.spkBar.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 22);
+            this.label1.Location = new System.Drawing.Point(20, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 2;
@@ -81,7 +84,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(212, 20);
+            this.textBox1.Location = new System.Drawing.Point(26, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 3;
@@ -91,50 +94,59 @@
             // 
             this.micBar.Location = new System.Drawing.Point(50, 20);
             this.micBar.Name = "micBar";
-            this.micBar.Size = new System.Drawing.Size(125, 19);
+            this.micBar.Size = new System.Drawing.Size(125, 15);
             this.micBar.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Speak";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(188, 22);
+            this.label3.Location = new System.Drawing.Point(3, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "IP";
             // 
-            // progressBar1
+            // radioStateIndicator
             // 
-            this.progressBar1.Location = new System.Drawing.Point(318, 21);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(56, 47);
-            this.progressBar1.TabIndex = 7;
+            this.radioStateIndicator.Location = new System.Drawing.Point(132, 3);
+            this.radioStateIndicator.Maximum = 1;
+            this.radioStateIndicator.Name = "radioStateIndicator";
+            this.radioStateIndicator.Size = new System.Drawing.Size(59, 51);
+            this.radioStateIndicator.TabIndex = 7;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.progressBar1);
             this.groupBox1.Controls.Add(this.micBar);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.spkBar);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(11, 30);
+            this.groupBox1.Location = new System.Drawing.Point(0, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(387, 81);
+            this.groupBox1.Size = new System.Drawing.Size(386, 74);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Испытания";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(10, 41);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(92, 24);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Sound Test";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioStateIndicator);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Location = new System.Drawing.Point(181, 8);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(195, 57);
+            this.panel1.TabIndex = 8;
             // 
             // groupBox2
             // 
@@ -143,7 +155,7 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.speakBox);
             this.groupBox2.Controls.Add(this.micBox);
-            this.groupBox2.Location = new System.Drawing.Point(12, 110);
+            this.groupBox2.Location = new System.Drawing.Point(0, 110);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(387, 139);
             this.groupBox2.TabIndex = 9;
@@ -198,12 +210,13 @@
             // 
             // mainMenu
             // 
+            this.mainMenu.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
             this.инфоToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(408, 24);
+            this.mainMenu.Size = new System.Drawing.Size(389, 24);
             this.mainMenu.TabIndex = 10;
             this.mainMenu.Text = "menuStrip1";
             // 
@@ -231,11 +244,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 23.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.Blue;
-            this.label6.Location = new System.Drawing.Point(-2, 252);
+            this.label6.Location = new System.Drawing.Point(-7, 252);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(405, 37);
+            this.label6.Size = new System.Drawing.Size(396, 35);
             this.label6.TabIndex = 11;
             this.label6.Text = "Эрика USB Адаптер тест";
             // 
@@ -243,7 +256,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 294);
+            this.ClientSize = new System.Drawing.Size(389, 298);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -253,6 +266,8 @@
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.mainMenu.ResumeLayout(false);
@@ -269,9 +284,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ProgressBar micBar;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar radioStateIndicator;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListBox speakBox;
@@ -284,6 +298,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

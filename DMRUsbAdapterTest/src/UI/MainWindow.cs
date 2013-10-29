@@ -62,5 +62,23 @@ namespace DMRUsbAdapterTest
             //
         }
 
+        private void connect(object sender, EventArgs e)
+        {
+            src.Kernel.Kernel.getInstance().ChangeRadioDevice("12.0.0.1");
+            src.Kernel.Kernel.getInstance().radioService.GenerateConnect();
+        }
+
+        public void SetRadioOnline()
+        {
+            radioStateIndicator.Value = 1;
+        }
+
+
+        public void SetRadioOffline()
+        {
+            radioStateIndicator.Value = 0;
+        }
+
+
     }
 }

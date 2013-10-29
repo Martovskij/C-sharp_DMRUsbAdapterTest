@@ -34,7 +34,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(89, 62);
+            this.button1.Location = new System.Drawing.Point(156, 145);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -45,7 +45,7 @@
             // messageLabel
             // 
             this.messageLabel.AutoSize = true;
-            this.messageLabel.Location = new System.Drawing.Point(111, 27);
+            this.messageLabel.Location = new System.Drawing.Point(12, 9);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(35, 13);
             this.messageLabel.TabIndex = 1;
@@ -55,7 +55,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(268, 97);
+            this.ClientSize = new System.Drawing.Size(394, 219);
             this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.button1);
             this.Name = "WarningWindow";

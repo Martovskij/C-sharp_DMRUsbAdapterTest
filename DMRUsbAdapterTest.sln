@@ -3,14 +3,39 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMRUsbAdapterTest", "DMRUsbAdapterTest\DMRUsbAdapterTest.csproj", "{B5CD68EE-897F-4B46-A45F-1A7A89C04D41}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{296BDC01-5894-44A8-A04E-5772F9945DF3}"
+	ProjectSection(SolutionItems) = preProject
+		DMRUsbAdapterTest\api_description.vsd = DMRUsbAdapterTest\api_description.vsd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C072D0DF-ACC1-468C-BA3F-D29D59553F99}"
+	ProjectSection(SolutionItems) = preProject
+		DMRUsbAdapterTest.vsmdi = DMRUsbAdapterTest.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = DMRUsbAdapterTest.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5CD68EE-897F-4B46-A45F-1A7A89C04D41}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B5CD68EE-897F-4B46-A45F-1A7A89C04D41}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B5CD68EE-897F-4B46-A45F-1A7A89C04D41}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{B5CD68EE-897F-4B46-A45F-1A7A89C04D41}.Debug|x86.ActiveCfg = Debug|x86
 		{B5CD68EE-897F-4B46-A45F-1A7A89C04D41}.Debug|x86.Build.0 = Debug|x86
+		{B5CD68EE-897F-4B46-A45F-1A7A89C04D41}.Release|Any CPU.ActiveCfg = Release|x86
+		{B5CD68EE-897F-4B46-A45F-1A7A89C04D41}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B5CD68EE-897F-4B46-A45F-1A7A89C04D41}.Release|Mixed Platforms.Build.0 = Release|x86
 		{B5CD68EE-897F-4B46-A45F-1A7A89C04D41}.Release|x86.ActiveCfg = Release|x86
 		{B5CD68EE-897F-4B46-A45F-1A7A89C04D41}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection

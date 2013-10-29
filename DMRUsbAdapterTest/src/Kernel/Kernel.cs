@@ -17,6 +17,17 @@ namespace DMRUsbAdapterTest.src.Kernel
         static Kernel instance = null;
 
 
+
+
+        Kernel()
+        {
+            instance = this;
+            mainWindow = new MainWindow();
+            radioService = new src.Radio.RadioService(Kernel.getInstance());
+            socketService = new src.Radio.SocketService(Kernel.getInstance().radioService);
+        }
+
+
         public static Kernel getInstance()
         {
             if (instance == null)
@@ -31,6 +42,11 @@ namespace DMRUsbAdapterTest.src.Kernel
         {
             //mainWindo
 
+        }
+
+        public void ChangeRadioDevice(String newIp)
+        {
+            radioDevice = new RadioDevice(radioService,newIp);
         }
 
 

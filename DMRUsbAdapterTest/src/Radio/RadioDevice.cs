@@ -7,26 +7,40 @@ namespace DMRUsbAdapterTest.src.Radio
 {
     class RadioDevice : AbstractRadio
     {
-        RadioDevice instance = null;
+ 
+        RadioService radioService = null;
+        public String ip {get;set;}
+        int id = 0;
+        public bool IsConnected = false;
 
-
-        RadioDevice() { }
-
-
-        public RadioDevice getInstance()
+        public RadioDevice(RadioService radioserv, String ip)
         {
-            if (instance == null)
-            {
-                instance = new RadioDevice();
-                return instance;
-            }
-            else return instance;
+            if (radioserv == null) throw new ArgumentNullException();
+            if (ip == null) throw new ArgumentNullException();
+            this.ip = ip;
+                 
+            this.radioService = radioserv;
+            String[] splitted = ip.Split('.');
+            id = Int32.Parse(splitted[3]);
+            id = id | (0xff00 & (byte.Parse(splitted[2]) << 8));
+            id = id | (0xff0000 & (byte.Parse(splitted[1]) << 16));
         }
 
-        public void connect()
+        public void Connect()
+        {
+           
+        }
+
+        public void PressPttRequest()
         {
 
         }
+
+        public void ReleasePttRequest()
+        {
+
+        }
+
 
     }
 }
