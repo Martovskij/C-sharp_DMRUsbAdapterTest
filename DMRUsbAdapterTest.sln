@@ -11,8 +11,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C072D0DF-ACC1-468C-BA3F-D29D59553F99}"
 	ProjectSection(SolutionItems) = preProject
 		DMRUsbAdapterTest.vsmdi = DMRUsbAdapterTest.vsmdi
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
 Global
