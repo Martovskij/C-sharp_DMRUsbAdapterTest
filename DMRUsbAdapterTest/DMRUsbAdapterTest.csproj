@@ -91,12 +91,16 @@
     <Compile Include="src\Radio\RadioService.cs" />
     <Compile Include="src\Radio\RccPacket.cs" />
     <Compile Include="src\Radio\SocketService.cs" />
+    <Compile Include="src\Sound\FileWaveProvider.cs" />
     <Compile Include="src\Sound\InputLines.cs" />
     <Compile Include="src\Sound\InterfaceLines.cs" />
     <Compile Include="src\Sound\Line.cs" />
     <Compile Include="src\Sound\MicrophoneCaptor.cs" />
     <Compile Include="src\Sound\OutputLines.cs" />
     <Compile Include="src\Sound\SoundManager.cs" />
+    <Compile Include="src\Sound\Speaker.cs" />
+    <Compile Include="src\Sound\WaveHeader.cs" />
+    <Compile Include="src\Sound\WaveOutput.cs" />
     <Compile Include="src\UI\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,7 +115,6 @@
     <Compile Include="src\UI\WarningWindow.Designer.cs">
       <DependentUpon>WarningWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="unit_test\SocketServiceTest.cs" />
     <EmbeddedResource Include="src\UI\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>

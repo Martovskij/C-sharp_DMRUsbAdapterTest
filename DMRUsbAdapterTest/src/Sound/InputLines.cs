@@ -18,11 +18,11 @@ namespace DMRUsbAdapterTest.src.Sound
         int selectedDeviceIndex = -1;
 
 
-
         InputLines()
         {
             audioDeviceList = new List<Line<WaveInCapabilities>>();
         }
+
 
         [MethodImplAttribute(MethodImplOptions.Synchronized)]
         static public InputLines getInstance()

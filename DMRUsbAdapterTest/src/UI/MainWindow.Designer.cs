@@ -68,9 +68,11 @@
             // 
             // spkBar
             // 
+            this.spkBar.ForeColor = System.Drawing.Color.Lime;
             this.spkBar.Location = new System.Drawing.Point(108, 43);
+            this.spkBar.Maximum = 32768;
             this.spkBar.Name = "spkBar";
-            this.spkBar.Size = new System.Drawing.Size(61, 19);
+            this.spkBar.Size = new System.Drawing.Size(67, 19);
             this.spkBar.TabIndex = 1;
             // 
             // label1
@@ -92,7 +94,9 @@
             // 
             // micBar
             // 
+            this.micBar.ForeColor = System.Drawing.Color.Lime;
             this.micBar.Location = new System.Drawing.Point(50, 20);
+            this.micBar.Maximum = 32768;
             this.micBar.Name = "micBar";
             this.micBar.Size = new System.Drawing.Size(125, 15);
             this.micBar.TabIndex = 4;
@@ -108,6 +112,7 @@
             // 
             // radioStateIndicator
             // 
+            this.radioStateIndicator.ForeColor = System.Drawing.Color.Lime;
             this.radioStateIndicator.Location = new System.Drawing.Point(132, 3);
             this.radioStateIndicator.Maximum = 1;
             this.radioStateIndicator.Name = "radioStateIndicator";
@@ -136,6 +141,7 @@
             this.button3.TabIndex = 8;
             this.button3.Text = "Sound Test";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.StartCheckSound);
             // 
             // panel1
             // 
@@ -225,20 +231,20 @@
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.exitHandler);
             // 
             // инфоToolStripMenuItem
             // 
             this.инфоToolStripMenuItem.Name = "инфоToolStripMenuItem";
-            this.инфоToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.инфоToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.инфоToolStripMenuItem.Text = "Инфо";
             // 
             // label6
@@ -256,6 +262,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(389, 298);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox2);
@@ -263,7 +270,7 @@
             this.Controls.Add(this.mainMenu);
             this.MainMenuStrip = this.mainMenu;
             this.Name = "MainWindow";
-            this.Text = "Form1";
+            this.Text = "Эрика USB Адаптер тест";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);

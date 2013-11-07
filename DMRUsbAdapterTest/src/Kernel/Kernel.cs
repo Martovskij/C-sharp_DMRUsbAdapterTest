@@ -5,10 +5,12 @@ using System.Text;
 using DMRUsbAdapterTest.src.Radio;
 using log4net;
 using log4net.Config;
+using DMRUsbAdapterTest.src.Sound;
+
 
 namespace DMRUsbAdapterTest.src.Kernel 
 {
-    class Kernel : AudioDataObserver
+      public class Kernel 
     {
         public MainWindow mainWindow;
         public RadioDevice radioDevice;
@@ -22,9 +24,12 @@ namespace DMRUsbAdapterTest.src.Kernel
         Kernel()
         {
             instance = this;
-            mainWindow = new MainWindow();
-            radioService = new src.Radio.RadioService(Kernel.getInstance());
-            socketService = new src.Radio.SocketService(Kernel.getInstance().radioService);
+            mainWindow = new MainWindow(Kernel.getInstance());
+            radioService = new RadioService(Kernel.getInstance());
+            socketService = new SocketService(Kernel.getInstance().radioService);
+            SoundManager.getInstance().SetupCaptorHandler(mainWindow);
+            SoundManager.getInstance().SetReadingDataHandler(mainWindow.AviableData);
+            mainWindow.InitSoundPanel();
         }
 
 
@@ -38,15 +43,10 @@ namespace DMRUsbAdapterTest.src.Kernel
             else return instance;
         }
 
-        public void notify(object data)
-        {
-            //mainWindo
-
-        }
 
         public void ChangeRadioDevice(String newIp)
         {
-            radioDevice = new RadioDevice(radioService,newIp);
+            radioDevice = new RadioDevice(newIp);
         }
 
 

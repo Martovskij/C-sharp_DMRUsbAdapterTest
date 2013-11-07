@@ -13,7 +13,7 @@ using System.Net.NetworkInformation;
 
 namespace DMRUsbAdapterTest.src.Radio
 {
-    class SocketService 
+     public class SocketService 
     {
 
         Socket udpSocket = null;

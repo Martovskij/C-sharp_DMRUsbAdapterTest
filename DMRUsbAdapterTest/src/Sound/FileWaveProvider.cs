@@ -14,7 +14,7 @@ namespace DMRUsbAdapterTest.src.Sound
     class FileWaveProvider: NAudio.Wave.IWaveProvider
     {
         FileStream waveFileReader;
-        public static readonly ILog log = LogManager.GetLogger(typeof(MainWindow));
+        public static readonly ILog log = LogManager.GetLogger(typeof(FileWaveProvider));
         WaveHeader waveHeader = null;
         D_BufferedDataCallback bufferedDataCallback = null;
 

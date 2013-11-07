@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DMRUsbAdapterTest.src.Radio
 {
-    interface ISocketHandle
+    public interface ISocketHandle
     {
         void AddToHandle(Object obj);
     }

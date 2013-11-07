@@ -8,6 +8,43 @@ namespace DMRUsbAdapterTest.src.Sound
     class WaveHeader
     {
 
+
+        private Int32 chunkId;
+        private Int32 chunkSize;
+        private Int32 format;
+        private Int32 subChunk1Id;
+        private Int32 subChunk1Size;
+        private Int16 audioFormat;
+        private Int16 numChannels;
+        private Int32 sampleRate;
+        private Int32 byteRate;
+        private Int16 blockAlign;
+        private Int16 bitsPerSample;
+        private Int32 subChunk2Id;
+        private Int32 subChunk2Size;
+
+
+
+
+        public WaveHeader()
+        {
+           chunkId = 0;
+           chunkSize = 0;
+           format = 0;
+           subChunk1Id = 0;
+           subChunk1Size = 0;
+           audioFormat = 0;
+           numChannels = 0;
+           sampleRate = 0;
+           byteRate = 0;
+           blockAlign = 0;
+           bitsPerSample = 0;
+           subChunk2Id = 0;
+           subChunk2Size = 0;
+        }
+
+
+
         public WaveHeader(byte[] header)
         {
 
@@ -107,10 +144,10 @@ namespace DMRUsbAdapterTest.src.Sound
         public Int32 Format { get; set; }
         public Int32 SubChunk1Id { get; set; }
         public Int32 SubChunk1Size { get; set; }
-        public Int16 AudioFormat { get; set; }
-        public Int16 NumChannels { get; set; }
-        public Int32 SampleRate { get; set; }
-        public Int32 ByteRate { get; set; }
+        public Int16 AudioFormat {get; set; }
+        public Int16 NumChannels {get{return numChannels;} set{numChannels = value;} }
+        public Int32 SampleRate {get { return sampleRate; } set {sampleRate = value;} }
+        public Int32 ByteRate {get { return byteRate; } set{byteRate = value; } }
         public Int16 BlockAlign { get; set; }
         public Int16 BitsPerSample { get; set; }
         public Int32 SubChunk2Id { get; set; }

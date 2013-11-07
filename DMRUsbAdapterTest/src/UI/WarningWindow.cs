@@ -18,7 +18,7 @@ namespace DMRUsbAdapterTest.src.UI
             if (main != null) this.mainWindow = main;
             
             InitializeComponent();
-            this.messageLabel.Text = message;
+            //this.messageLabel.Text = message;
             Application.Run(this);
            
         }

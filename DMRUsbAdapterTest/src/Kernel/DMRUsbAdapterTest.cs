@@ -12,7 +12,7 @@ namespace DMRUsbAdapterTest
 {
     static class DMRUsbAdapterTest
     {
-        public static readonly ILog log = LogManager.GetLogger(typeof(DMRUsbAdapterTest)); 
+        public static readonly ILog log = LogManager.GetLogger(typeof(DMRUsbAdapterTest).ToString()); 
         [STAThread]
         static void Main()
         {

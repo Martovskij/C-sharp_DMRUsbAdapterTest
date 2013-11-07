@@ -15,17 +15,57 @@ namespace DMRUsbAdapterTest.src.Sound
     {
         static SoundManager instance = null;
         MicrophoneCaptor microphoneCaptor = null;
+        WaveOutput wavePlayer = null;
+        Speaker speaker = null;
 
+
+        public int SelectedMicrophoneIndex {set;get;}
+        public int SelectedSpeakerIndex {set;get;}
 
         SoundManager() 
-        { 
-                
+        {
+            ReloadAudioDeviceList();
+            SelectedMicrophoneIndex = 0;
+            SelectedSpeakerIndex = 0;
+            microphoneCaptor = new MicrophoneCaptor(null);
+            speaker = new Speaker();
+            wavePlayer = new WaveOutput();
         }
 
         public void SetupCaptorHandler(Kernel.AudioDataObserver observer)
         {
             if (observer == null) throw new ArgumentNullException();
-            microphoneCaptor = new MicrophoneCaptor(observer);
+            microphoneCaptor.SetupMicrophoneObserver(observer);
+        }
+
+        public bool StartRecord() 
+        {
+            if (microphoneCaptor != null)
+            {
+                if (!microphoneCaptor.StartRecord(SelectedMicrophoneIndex))
+                {
+                    return false;
+                }
+                speaker.PlayStream(microphoneCaptor.GetInputStream());
+                return true;
+            }
+            return false;
+        }
+
+        public void StopRecord()
+        {
+            if (microphoneCaptor != null)
+                microphoneCaptor.StopRecord();
+        }
+
+        public bool StartPlaySound(String pathToFile)
+        {
+            return wavePlayer.Play(pathToFile,SelectedSpeakerIndex);
+        }
+
+        public void SetReadingDataHandler(D_BufferedDataCallback callBack)
+        {
+            wavePlayer.SetAviableDataHandler(callBack);
         }
 
 
@@ -70,11 +110,13 @@ namespace DMRUsbAdapterTest.src.Sound
 
         public void changeSelectedMic(int index)  // Warning: throws ArgumentIndexOutOfRangeException
         {
+            SelectedMicrophoneIndex = index;
             InputLines.getInstance().setSelectedDeviceIndex(index);
         }
 
         public void changeSelectedSpeak(int index)  // Warning: throws ArgumentIndexOutOfRangeException
         {
+            SelectedSpeakerIndex = index;
             OutputLines.getInstance().setSelectedDeviceIndex(index);
         }
 

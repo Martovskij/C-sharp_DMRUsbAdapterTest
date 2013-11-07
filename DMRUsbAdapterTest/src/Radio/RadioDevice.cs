@@ -5,21 +5,19 @@ using System.Text;
 
 namespace DMRUsbAdapterTest.src.Radio
 {
-    class RadioDevice : AbstractRadio
+    public class RadioDevice : AbstractRadio
     {
- 
-        RadioService radioService = null;
         public String ip {get;set;}
         int id = 0;
         public bool IsConnected = false;
 
-        public RadioDevice(RadioService radioserv, String ip)
+        public RadioDevice(String ip)
         {
-            if (radioserv == null) throw new ArgumentNullException();
+          ///  if (radioserv == null) throw new ArgumentNullException();
             if (ip == null) throw new ArgumentNullException();
             this.ip = ip;
                  
-            this.radioService = radioserv;
+           // this.radioService = radioserv;
             String[] splitted = ip.Split('.');
             id = Int32.Parse(splitted[3]);
             id = id | (0xff00 & (byte.Parse(splitted[2]) << 8));

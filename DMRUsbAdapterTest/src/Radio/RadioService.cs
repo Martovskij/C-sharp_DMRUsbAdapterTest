@@ -14,7 +14,7 @@ namespace DMRUsbAdapterTest.src.Radio
 {
 
 
-    class RadioService : ISocketHandle
+    public class RadioService : ISocketHandle
     {
         Socket udpSocket = null;
         Thread currThread;
@@ -29,7 +29,6 @@ namespace DMRUsbAdapterTest.src.Radio
 
         public RadioService(src.Kernel.Kernel kernel)
         {
-          
             if (kernel == null) throw new ArgumentNullException();
             this.kernel = kernel;
            
@@ -157,20 +156,19 @@ namespace DMRUsbAdapterTest.src.Radio
             Packet[7] = 0x00; //PN
             Packet[8] = 0x00;   //length
             Packet[9] = 0x15;  //// + rcc pack len
-            Packet[10] = 0x5A;
-            Packet[11] = 0xA9;
+            Packet[10] = 0x5B;
+            Packet[11] = 0xA8;
 
             // RCC HEADER
             Packet[12] = 0x02;   // rccheader 
-            Packet[13] = 0x41;   // opcode
+            Packet[13] = 0x41;   // opcode                      
             Packet[14] = 0x00;   // opcode
             Packet[15] = 0x02;   // len
             Packet[16] = 0x00;   // len
             Packet[17] = 0x1E;   //ptt // target 1E
-            Packet[18] = 0x00;   //press // action 01
-            Packet[19] = 0xD0;   // check sum
+            Packet[18] = 0x00;   //release // action 01
+            Packet[19] = 0xD1;   // check sum
             Packet[20] = 0x03;   // rcc end
-
 
             if (kernel.socketService != null)
                 kernel.socketService.WriteToSocket(Packet, kernel.radioDevice.ip);
@@ -184,6 +182,9 @@ namespace DMRUsbAdapterTest.src.Radio
 
         public int GetChecksum(byte[] packet, int len)
         {
+            if(packet==null) packet = new byte[10];
+            if (len < 0) len = packet.Length;
+
             int Checksum = 0;
             int i = 0;
             while (len > 1)
@@ -209,6 +210,9 @@ namespace DMRUsbAdapterTest.src.Radio
 
         byte[] GenerateDataPacket(byte[] rcc_pack)
         {
+
+            if(rcc_pack==null) rcc_pack = new byte[10];
+
             byte[] Packet = new byte[12 + rcc_pack.Length];
             Packet[0] = 0x7e;
             Packet[1] = 0x00;   //version
@@ -245,7 +249,6 @@ namespace DMRUsbAdapterTest.src.Radio
             {
                 if (obj.GetType() == typeof(RccPacket))
                 {
-                    log.Debug("add pack to queue handle");
                     packetQueue.Add((RccPacket)obj);
                 }
                 else
@@ -305,7 +308,7 @@ namespace DMRUsbAdapterTest.src.Radio
 
                             if (packet.IsRccPacket())
                             {
-
+                                log.Debug("get rcc packet");
 
                                 
                             }
@@ -334,12 +337,13 @@ namespace DMRUsbAdapterTest.src.Radio
             {
                 try
                 {
-                    if (kernel.radioDevice.IsConnected)
-                        if (!kernel.socketService.Ping(kernel.radioDevice.ip))
-                        {
+                      if(kernel.radioDevice != null)
+                        if (kernel.radioDevice.IsConnected)
+                          if (!kernel.socketService.Ping(kernel.radioDevice.ip))
+                          {
                             kernel.radioDevice.IsConnected = false;
                             kernel.mainWindow.SetRadioOffline();
-                        }
+                          }
                     Thread.Sleep(3000);
                 }
                 catch(Exception ex)
