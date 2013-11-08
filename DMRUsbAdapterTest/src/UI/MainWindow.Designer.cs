@@ -37,8 +37,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.radioStateIndicator = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,15 +51,16 @@
             this.инфоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(258, 43);
+            this.button1.Location = new System.Drawing.Point(6, 29);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(59, 25);
+            this.button1.Size = new System.Drawing.Size(120, 25);
             this.button1.TabIndex = 0;
             this.button1.Text = "Connect";
             this.button1.UseVisualStyleBackColor = true;
@@ -71,7 +72,7 @@
             this.spkBar.Location = new System.Drawing.Point(108, 43);
             this.spkBar.Maximum = 32768;
             this.spkBar.Name = "spkBar";
-            this.spkBar.Size = new System.Drawing.Size(48, 19);
+            this.spkBar.Size = new System.Drawing.Size(67, 19);
             this.spkBar.TabIndex = 1;
             // 
             // label1
@@ -85,7 +86,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(217, 17);
+            this.textBox1.Location = new System.Drawing.Point(26, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 3;
@@ -103,7 +104,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(194, 20);
+            this.label3.Location = new System.Drawing.Point(3, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 13);
             this.label3.TabIndex = 6;
@@ -112,7 +113,7 @@
             // radioStateIndicator
             // 
             this.radioStateIndicator.ForeColor = System.Drawing.Color.Lime;
-            this.radioStateIndicator.Location = new System.Drawing.Point(323, 17);
+            this.radioStateIndicator.Location = new System.Drawing.Point(132, 3);
             this.radioStateIndicator.Maximum = 1;
             this.radioStateIndicator.Name = "radioStateIndicator";
             this.radioStateIndicator.Size = new System.Drawing.Size(59, 51);
@@ -120,13 +121,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.radioStateIndicator);
             this.groupBox1.Controls.Add(this.micBar);
             this.groupBox1.Controls.Add(this.spkBar);
             this.groupBox1.Location = new System.Drawing.Point(0, 30);
@@ -135,17 +132,6 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Испытания";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(165, 46);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(87, 17);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "MicToSpeak";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.setnewstate);
             // 
             // button3
             // 
@@ -156,6 +142,17 @@
             this.button3.Text = "Sound Test";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.StartCheckSound);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioStateIndicator);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Location = new System.Drawing.Point(181, 8);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(195, 57);
+            this.panel1.TabIndex = 8;
             // 
             // groupBox2
             // 
@@ -225,7 +222,7 @@
             this.инфоToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(391, 24);
+            this.mainMenu.Size = new System.Drawing.Size(389, 24);
             this.mainMenu.TabIndex = 10;
             this.mainMenu.Text = "menuStrip1";
             // 
@@ -240,7 +237,7 @@
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.exitHandler);
             // 
@@ -266,18 +263,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(391, 304);
+            this.ClientSize = new System.Drawing.Size(389, 298);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.mainMenu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mainMenu;
             this.Name = "MainWindow";
             this.Text = "Эрика USB Адаптер тест";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.mainMenu.ResumeLayout(false);
@@ -309,7 +306,7 @@
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

@@ -41,7 +41,7 @@ namespace DMRUsbAdapterTest.src.Radio
             catch (Exception ex)
             {
                 log.Debug(ex);
-                new src.UI.WarningWindow("Ошибка открытия порта\nОсвободите порт 3005 и перезапустите программу");
+                new src.UI.WarningWindow(null,"Ошибка открытия порта\nОсвободите порт 3005 и перезапустите программу");
             }
             currThread = new Thread(run);
             currThread.Name = "RadioMessageQueue";
@@ -50,12 +50,7 @@ namespace DMRUsbAdapterTest.src.Radio
             reachableThread.Start();
         }
 
-        public void CloseService()
-        {
-            currThread.Abort();
-            reachableThread.Abort();
 
-        }
 
 /*=================================================================================*/
 /*------------------------------------ API METHODS --------------------------------*/
@@ -275,60 +270,57 @@ namespace DMRUsbAdapterTest.src.Radio
         {
             while(currThread.IsAlive)
             {
-                try
+                if (packetQueue.Count > 0)
                 {
-                    if (packetQueue.Count > 0)
+
+                    tempQueue = packetQueue.ToList();
+                    packetQueue.Clear();
+                    for (int i = 0; i < tempQueue.Count; i++ )
                     {
-                        tempQueue = packetQueue.ToList();
-                        packetQueue.Clear();
-                        for (int i = 0; i < tempQueue.Count; i++)
+
+                        RccPacket packet = tempQueue.ElementAt(i);
+                        if (packet.IsHrnpPacket())
                         {
-                            RccPacket packet = tempQueue.ElementAt(i);
-                            if (packet.IsHrnpPacket())
+
+                            switch (packet.getOpcode())
                             {
-                                switch (packet.getOpcode())
-                                {
-                                    case Opcode.CONNECTION_ACCEPT:
-                                        log.Debug("connection ok");
-                                        kernel.radioDevice.IsConnected = true;
-                                        kernel.mainWindow.SetRadioOnline();
-                                        new src.UI.WarningWindow("подключение принято");
-                                        break;
+                                case Opcode.CONNECTION_ACCEPT:
+                                    log.Debug("connection ok");
+                                    kernel.radioDevice.IsConnected = true;
+                                    kernel.mainWindow.SetRadioOnline();
+                                    new src.UI.WarningWindow(null, "подключение принято");
+                                    break;
 
-                                    case Opcode.CONNECTION_REJECT:
-                                        kernel.radioDevice.IsConnected = false;
-                                        kernel.mainWindow.SetRadioOffline();
-                                        log.Debug("connection reject");
-                                        new src.UI.WarningWindow("подключение отклонено");
-                                        break;
+                                case Opcode.CONNECTION_REJECT:
+                                    kernel.radioDevice.IsConnected = false;
+                                    kernel.mainWindow.SetRadioOffline();
+                                    log.Debug("connection reject");
+                                    new src.UI.WarningWindow(null, "подключение отклонено");
+                                    break;
 
-                                    case Opcode.DATA:
-                                        break;
+                                case Opcode.DATA:
+                                    break;
 
-                                    case Opcode.DATA_ACK:
-                                        break;
-                                }
-
-
-                                if (packet.IsRccPacket())
-                                {
-                                    log.Debug("get rcc packet");
-                                }
+                                case Opcode.DATA_ACK:
+                                    break;
                             }
 
+
+                            if (packet.IsRccPacket())
+                            {
+                                log.Debug("get rcc packet");
+
+                                
+                            }
                         }
-                        tempQueue.Clear();
 
                     }
-                    else
-                    {
-                        Thread.Sleep(50);
-                    }
+                    tempQueue.Clear();
+
                 }
-                catch(System.Threading.ThreadAbortException ex)
+                else
                 {
-                    log.Debug("thread abort exception");
-                    break;
+                    Thread.Sleep(50);
                 }
 
 
@@ -357,7 +349,6 @@ namespace DMRUsbAdapterTest.src.Radio
                 catch(Exception ex)
                 {
                     log.Debug(ex);
-                    break;
                 }
             }
         }

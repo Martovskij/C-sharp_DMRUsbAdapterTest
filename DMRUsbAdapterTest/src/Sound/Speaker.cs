@@ -18,10 +18,6 @@ namespace DMRUsbAdapterTest.src.Sound
             
         }
 
-        public void StopStream()
-        {
-            if (waveOut != null) waveOut.Stop();
-        }
 
         public void PlayStream(NAudio.Wave.WaveIn sourceStream)
         {

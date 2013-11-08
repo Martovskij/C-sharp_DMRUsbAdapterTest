@@ -39,11 +39,6 @@ namespace DMRUsbAdapterTest.src.Sound
         }
 
 
-        public void CloseCaptor()
-        {
-             if(waveSource!=null) waveSource.StopRecording();
-        }
-
         public void SetupMicrophoneObserver(Kernel.AudioDataObserver obs)
         {
             if (obs != null)

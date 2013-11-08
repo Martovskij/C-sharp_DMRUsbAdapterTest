@@ -18,13 +18,7 @@ namespace DMRUsbAdapterTest.src.Kernel
         public RadioService radioService;
         static Kernel instance = null;
 
-        Boolean micToSpeakOption = false;
 
-        public Boolean MicToSpeakOption
-        {
-            set { micToSpeakOption = value; }
-            get { return micToSpeakOption; }
-        }
 
 
         Kernel()
