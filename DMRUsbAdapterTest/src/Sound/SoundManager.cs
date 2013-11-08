@@ -6,7 +6,6 @@ using NAudio;
 using NAudio.WindowsMediaFormat;
 using NAudio.Wave;
 using System.Runtime.CompilerServices;
-using NUnit.Framework;
 
 
 namespace DMRUsbAdapterTest.src.Sound
@@ -32,6 +31,27 @@ namespace DMRUsbAdapterTest.src.Sound
             wavePlayer = new WaveOutput();
         }
 
+
+        [MethodImplAttribute(MethodImplOptions.Synchronized)]
+        public static SoundManager getInstance()
+        {
+
+            if (instance == null)
+            {
+                instance = new SoundManager();
+                return instance;
+            }
+            else return instance;
+        }
+
+
+        public void CloseAllDevices()
+        {
+            if (microphoneCaptor != null) microphoneCaptor.CloseCaptor();
+            if (wavePlayer != null) wavePlayer.CloseOutputChannel();
+            if (speaker != null) speaker.StopStream();
+        }
+
         public void SetupCaptorHandler(Kernel.AudioDataObserver observer)
         {
             if (observer == null) throw new ArgumentNullException();
@@ -52,6 +72,22 @@ namespace DMRUsbAdapterTest.src.Sound
             return false;
         }
 
+        public bool StartRecord(bool MicToSpeak)
+        {
+            if (microphoneCaptor != null)
+            {
+                if (!microphoneCaptor.StartRecord(SelectedMicrophoneIndex))
+                {
+                    return false;
+                }
+                if(MicToSpeak)
+                   speaker.PlayStream(microphoneCaptor.GetInputStream());
+                return true;
+            }
+            return false;
+        }
+
+
         public void StopRecord()
         {
             if (microphoneCaptor != null)
@@ -69,17 +105,7 @@ namespace DMRUsbAdapterTest.src.Sound
         }
 
 
-        [MethodImplAttribute(MethodImplOptions.Synchronized)]
-        public static SoundManager getInstance()
-        {
-            
-            if (instance == null)
-            {
-                instance = new SoundManager();
-                return instance;
-            }
-            else return instance;
-        }
+
 
 
         public void ReloadAudioDeviceList()

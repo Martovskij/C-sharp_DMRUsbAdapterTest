@@ -30,7 +30,7 @@ namespace DMRUsbAdapterTest
             {
                 log.Error(ex.Message);
                 Console.WriteLine(ex);
-                new WarningWindow(null,ex.ToString());
+                new WarningWindow(ex.ToString());
             }
         }
     }

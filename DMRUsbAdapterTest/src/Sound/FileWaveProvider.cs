@@ -20,23 +20,37 @@ namespace DMRUsbAdapterTest.src.Sound
 
         public FileWaveProvider(String pathToFile)
         {
-            try
-            {
+           // try
+           // {
                 waveFileReader = new FileStream(pathToFile, FileMode.Open);
                 byte[] header = new byte[44];
                 waveFileReader.Read(header,0,44);
                 waveHeader = new WaveHeader(header);
-            }
-            catch(IOException ex)
-            {
-                log.Debug(ex.Message);
-            }
+           // }
+           // catch(IOException ex)
+            //{
+           //     log.Debug(ex.Message);
+           // }
         }
 
 
         public void SetBufferedDataCallback(D_BufferedDataCallback new_bufferedDataCallback)
         {
             bufferedDataCallback = new_bufferedDataCallback;
+        }
+
+        public void CloseStream()
+        {
+            try
+            {
+                waveFileReader.Close();
+            }
+            catch(Exception ex)
+            {
+                log.Debug(ex.Message);
+                log.Debug(ex.StackTrace);
+            }
+
         }
 
 

@@ -20,6 +20,13 @@ namespace DMRUsbAdapterTest.src.Sound
 
         }
 
+        public void CloseOutputChannel()
+        {
+            if (waveOut != null) waveOut.Stop();
+            if(waveProvider!=null)waveProvider.CloseFile();
+        }
+
+
         public bool Play(String path, int deviceIndex)
         {
             try
@@ -37,6 +44,7 @@ namespace DMRUsbAdapterTest.src.Sound
             {
                 
                 log.Debug(ex.Message);
+                log.Debug(ex.StackTrace);
                 return false;
             }
         }

@@ -25,6 +25,8 @@ namespace DMRUsbAdapterTest
         public MainWindow(Kernel kernel)
         {
             InitializeComponent();
+            ;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.kernel = kernel;
@@ -54,7 +56,6 @@ namespace DMRUsbAdapterTest
                 speakBox.Items.Add(speakList.ElementAt(i));
             }
 
-
             if (micList.Count <= SoundManager.getInstance().SelectedMicrophoneIndex)
             {
                 micBox.SetSelected(SoundManager.getInstance().SelectedMicrophoneIndex,true);
@@ -62,17 +63,17 @@ namespace DMRUsbAdapterTest
                 {
                     SoundManager.getInstance().SelectedMicrophoneIndex = 0;
                     micBox.SelectedIndex = 0;
-                    new src.UI.WarningWindow(null,"warning window");
+                    new src.UI.WarningWindow("warning window");
                 }
-                
             }
+
             else SoundManager.getInstance().SelectedMicrophoneIndex = -1;
 
             if(speakList.Count <= SoundManager.getInstance().SelectedSpeakerIndex)
             {
                 micBox.SetSelected(SoundManager.getInstance().SelectedSpeakerIndex,true);
             }
-
+        
 
         }
 
@@ -80,6 +81,9 @@ namespace DMRUsbAdapterTest
 
         private void exitHandler(object sender, EventArgs e)
         {
+            kernel.socketService.CloseSocket();
+            SoundManager.getInstance().CloseAllDevices();
+            kernel.radioService.CloseService();
             Application.Exit();
         }
 
@@ -87,7 +91,10 @@ namespace DMRUsbAdapterTest
         {
             SoundManager.getInstance().StopRecord();
             SoundManager.getInstance().SelectedMicrophoneIndex = micBox.SelectedIndex;
-            SoundManager.getInstance().StartRecord();
+            if (!SoundManager.getInstance().StartRecord(kernel.MicToSpeakOption))
+            {
+                new src.UI.WarningWindow("Линия захвата недоступна.\nВыберите другую линию захвата в меню.");
+            };
         }
 
         private void changeSpeakHandler(object sender, EventArgs e)
@@ -141,6 +148,7 @@ namespace DMRUsbAdapterTest
             catch(Exception ex)
             {
                 log.Debug(ex.Message);
+                log.Debug(ex.StackTrace);
             }
 
         }
@@ -176,6 +184,7 @@ namespace DMRUsbAdapterTest
             }
         }
 
+
         public void AviableData(byte[] buffer)
         {
             if (buffer == null) return;
@@ -209,7 +218,28 @@ namespace DMRUsbAdapterTest
              if(kernel.radioDevice!=null)
               if (kernel.radioDevice.IsConnected)
                   kernel.radioService.GeneratePressPtt();
-            SoundManager.getInstance().StartPlaySound("audiotest.wav");
+
+             if (!SoundManager.getInstance().StartPlaySound("audiotest.wav"))
+             {
+                 button3.Enabled = true;
+                 new src.UI.WarningWindow("Линия вывода недоступна.\nЛибо отсутствует или некорректен\nтестовый аудиофайл\nВыберите другую линию вывода в меню.");
+             }
+        }
+
+        private void setnewstate(object sender, EventArgs e)
+        {
+            kernel.MicToSpeakOption = checkBox1.Checked;
+            src.Sound.SoundManager.getInstance().StopRecord();
+            src.Sound.SoundManager.getInstance().StartRecord(kernel.MicToSpeakOption);
+        }
+
+
+        private void MainWindow_FormClosed(object sender, FormClosingEventArgs e)
+        {
+            kernel.socketService.CloseSocket();
+            SoundManager.getInstance().CloseAllDevices();
+            kernel.radioService.CloseService();
+            Application.Exit();
         }
 
     }

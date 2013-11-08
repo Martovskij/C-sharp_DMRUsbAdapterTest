@@ -24,6 +24,9 @@ namespace DMRUsbAdapterTest.src.Radio
         public static readonly ILog log = LogManager.GetLogger(typeof(SocketService));
         Int16 PORT = 3005;
         Ping ping = new Ping();
+        Object socketMutex = new Object();
+
+
 
         public SocketService(ISocketHandle handle)
         {
@@ -37,6 +40,27 @@ namespace DMRUsbAdapterTest.src.Radio
             currThread = new Thread(run);
             currThread.Start();
         }
+
+        public void CloseSocket()
+        {
+            try
+            {
+                lock(socketMutex)
+                {
+                    currThread.Abort();
+                   udpSocket.Close();
+                   udpSocket = null;
+                }
+            }
+            catch(Exception ex)
+            {
+                log.Debug(ex.Message);
+                log.Debug(ex.StackTrace);
+            }
+
+        }
+
+
 
         public bool Ping(String ip)
         {
@@ -86,18 +110,32 @@ namespace DMRUsbAdapterTest.src.Radio
                 {
                     int recvLen = 0;
                     byte[] data = new byte[1024];
-                    recvLen = udpSocket.ReceiveFrom(data, ref Remote);
+                    lock (udpSocket)
+                    {
+                        recvLen = udpSocket.ReceiveFrom(data, ref Remote);
+                    }
                     if (recvLen > 1024) continue;
                     else
                         if (handlerService != null)
-                        handlerService.AddToHandle(new RccPacket(data));
+                            handlerService.AddToHandle(new RccPacket(data));
+                    Thread.Sleep(5);
                 }
-                catch(Exception ex)
+                catch (System.Threading.ThreadAbortException)
+                {
+                    log.Debug("thread abort exception");
+                    break;
+                }
+                catch (Exception ex)
                 {
                     log.Debug(ex);
                     Console.WriteLine(ex);
+                    if (udpSocket != null)
+                    {
+                        break;
+                    }
                 }
             }
+            log.Debug("socket reader thread is end");
         }
 
 

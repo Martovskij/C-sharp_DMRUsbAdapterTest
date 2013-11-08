@@ -28,7 +28,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -46,30 +46,6 @@
     </Reference>
     <Reference Include="NAudio.WindowsMediaFormat">
       <HintPath>libs\NAudio.WindowsMediaFormat.dll</HintPath>
-    </Reference>
-    <Reference Include="NSubstitute">
-      <HintPath>libs\Nunit\NSubstitute.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit-console-runner">
-      <HintPath>libs\Nunit\nunit-console-runner.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit-gui-runner">
-      <HintPath>libs\Nunit\nunit-gui-runner.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core">
-      <HintPath>libs\Nunit\nunit.core.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>libs\Nunit\nunit.core.interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.uiexception">
-      <HintPath>libs\Nunit\nunit.uiexception.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.uikit">
-      <HintPath>libs\Nunit\nunit.uikit.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.util">
-      <HintPath>libs\Nunit\nunit.util.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -109,12 +85,7 @@
     </Compile>
     <Compile Include="src\Kernel\DMRUsbAdapterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\UI\WarningWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\UI\WarningWindow.Designer.cs">
-      <DependentUpon>WarningWindow.cs</DependentUpon>
-    </Compile>
+    <Compile Include="src\UI\WarningWindow.cs" />
     <EmbeddedResource Include="src\UI\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,9 +99,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="src\UI\WarningWindow.resx">
-      <DependentUpon>WarningWindow.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
